@@ -69,7 +69,7 @@ hist(RENDA_PRESUMIDA, xlab="Renda presumida (R$", ylab="Freq. Absoluta", main="H
 boxplot(RENDA_PRESUMIDA, ylab="Renda presumida (R$)", main="Box Plot Renda presumida (R$) ")
 
 
-
+summary(RENDA_PRESUMIDA)
 #Selecionar o conjunto de dados
 renda =filter(cadastro,RENDA_PRESUMIDA < 10000) 
 
@@ -79,6 +79,7 @@ hist(renda$RENDA_PRESUMIDA, xlab="Renda presumida (R$)", ylab="Freq. Absoluta", 
 
 boxplot(renda$RENDA_PRESUMIDA, ylab="Renda presumida (R$)", main="Box Plot da renda presumida")
 
+summary(RENDA_PRESUMIDA)
 
 par(mfrow=c(1,2))
 par(mar=c(10,4,8,2))
@@ -90,6 +91,9 @@ boxplot(RENDA_PRESUMIDA, ylab="Renda presumida (R$)", main="Box Plot Renda presu
 attach(cadastro)
 # Medidas resumo da base completa
 summary(RENDA_PRESUMIDA)
+summarise(cadastro, media= mean(RENDA_PRESUMIDA),desvio_padrao=sd(RENDA_PRESUMIDA))
+cv= sd(RENDA_PRESUMIDA)/mean(RENDA_PRESUMIDA);cv
+
 
 #Criar a vari?vel outlier_renda na base de dados
 cadastro$outlier_renda =cadastro$RENDA_PRESUMIDA
